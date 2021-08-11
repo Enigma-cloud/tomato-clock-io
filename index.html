@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>トマト</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Video Background -->
     <video class="video-background" loop muted autoplay>
-        <source src="jp-room.mp4"></source>
+        <source src="./assets/jp-room.mp4"></source>
     </video>
     <div class="video-overlay">
         <!-- Video by <a href="https://pixabay.com/users/heheqingpo-21680118/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=74450">heheqingpo</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=74450">Pixabay</a> -->
@@ -19,13 +19,16 @@
     <div class="container">
         <!-- Input -->
         <div class="input-container" id="input-container">
-            <h1>Create a Custom Countdown!</h1>
+            <div class="menu">
+                Custom Countdown
+                <!-- <button>Custom Countdown</button> -->
+            </div>
             <form class="form" id="countdownForm">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" placeholder="What are you counting down to?"  required>
-                <label for="date-picker">Select a Date</label>
-                <input type="date" name="date" id="date-picker" required>
-                <button type="submit">Submit</button>
+                <label for="title" hidden>Title</label>
+                <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  required>
+                <label for="date-picker" hidden>Select a Date</label>
+                <input class="custom-input" type="date" name="date" id="date-picker" required>
+                <button class="custom-btn" type="submit">Submit</button>
             </form>
         </div>
         <!-- Countdown -->

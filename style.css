@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 html {
   box-sizing: border-box;
@@ -10,7 +10,7 @@ body {
   overflow-y: hidden;
   display: flex;
   align-items: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Video Background */
@@ -36,26 +36,30 @@ video {
   top: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(22, 22, 22, 0.7);
+  /* background-color: rgba(22, 22, 22, 0.7); */
 }
 
 /* Container */
 .container {
   min-width: 580px;
   min-height: 304px;
-  color: black;
+  color: rgb(255, 255, 255);
   margin: 0 auto;
   padding: 25px 50px;
   border-radius: 5px;
   z-index: 2;
   display: flex;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(213, 98, 98, 0.85);
 }
 
 .input-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
   position: relative;
-  top: 20px;
+  height: 100%;
 }
 
 h1 {
@@ -67,7 +71,11 @@ h1 {
 
 /* Form */
 .form {
-  width: 480px;
+  width: 100%;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #181a1b;
+  overflow: hidden;
 }
 
 label {
@@ -83,7 +91,19 @@ input {
   border-radius: 20px;
   background: #fff;
   outline: none;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.custom-input {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+#date-picker:hover {
+  cursor: pointer;
 }
 
 /* Button */
@@ -94,7 +114,7 @@ button {
   margin-top: 15px;
   border: none;
   text-transform: uppercase;
-  background: #006959;
+  background: #ba3f3f;
   color: white;
   cursor: pointer;
   outline: none;
@@ -102,6 +122,13 @@ button {
 
 button:hover {
   filter: brightness(90%);
+}
+
+.custom-btn {
+  position: relative;
+  bottom: 0;
+  border-radius: 0;
+  background-color: #43484b;
 }
 
 /* Countdown */
@@ -124,6 +151,10 @@ li span {
 }
 
 /* Complete */
+.green-container {
+  background-color: rgba(98, 213, 121, 0.85);
+}
+
 .complete {
   position: relative;
   top: 60px;
@@ -167,6 +198,7 @@ li span {
 
   .input-container {
     top: unset;
+    flex-wrap: wrap;
   }
 
   .countdown {

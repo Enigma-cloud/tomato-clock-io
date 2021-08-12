@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Video Background -->
-    <video class="video-background" loop muted autoplay>
+    <video class="video-background" loop muted autoplay disablePictureInPicture>
         <source src="./assets/jp-room.mp4"></source>
     </video>
     <div class="video-overlay">
@@ -17,12 +17,14 @@
     </div>
     <!-- Container -->
     <div class="container">
+        <!-- Menu -->
+        <!-- <div class="menu" id="menu">
+            <button disabled>Timer</button>
+            <button disabled>Countdown</button>
+            <button disabled>Settings</button>
+        </div> -->
         <!-- Input -->
         <div class="input-container" id="input-container">
-            <div class="menu">
-                Custom Countdown
-                <!-- <button>Custom Countdown</button> -->
-            </div>
             <form class="form" id="countdownForm">
                 <label for="title" hidden>Title</label>
                 <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  required>
@@ -34,7 +36,7 @@
         <!-- Countdown -->
         <div class="countdown" id="countdown" hidden>
             <h1 id="countdown-title">Countdown Title</h1>
-            <ul>
+            <ul class="list">
                 <li><span class="time-span"></span>Days</li>
                 <li><span class="time-span"></span>Hours</li>
                 <li><span class="time-span"></span>Minutes</li>

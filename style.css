@@ -41,6 +41,10 @@ video {
 
 /* Container */
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   min-width: 580px;
   min-height: 304px;
   color: rgb(255, 255, 255);
@@ -54,11 +58,8 @@ video {
 }
 
 .input-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-
   position: relative;
+  top: 0;
   height: 100%;
 }
 
@@ -68,6 +69,16 @@ h1 {
   margin-top: 0;
   margin-bottom: 10px;
 }
+
+/* Menu */
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 50px;
+}
+
 
 /* Form */
 .form {
@@ -94,6 +105,11 @@ input {
   font-family: 'Montserrat', sans-serif;
 }
 
+input[type=date] {
+  width: 30%;
+  cursor: pointer;
+}
+
 .custom-input {
   background-color: transparent;
   border: none;
@@ -102,8 +118,12 @@ input {
   margin: 10px;
 }
 
-#date-picker:hover {
-  cursor: pointer;
+.custom-btn {
+  position: relative;
+  bottom: 0;
+  border-radius: 0;
+  background-color: #43484b;
+  margin-top: 41.5px;
 }
 
 /* Button */
@@ -124,19 +144,12 @@ button:hover {
   filter: brightness(90%);
 }
 
-.custom-btn {
-  position: relative;
-  bottom: 0;
-  border-radius: 0;
-  background-color: #43484b;
-}
-
 /* Countdown */
-ul {
+.list {
   margin-left: -45px;
 }
 
-li {
+.list li {
   display: inline-block;
   font-size: 30px;
   list-style-type: none;
@@ -144,7 +157,7 @@ li {
   text-transform: uppercase;
 }
 
-li span {
+.list li span {
   display: block;
   font-size: 80px;
   text-align: center;
@@ -189,11 +202,23 @@ li span {
   }
 
   .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
     min-width: unset;
     width: 95vw;
     min-height: 245px;
     padding: 20px;
     margin: 10px;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
   }
 
   .input-container {
@@ -211,18 +236,36 @@ li span {
   }
 
   input {
+    font-size: 13px;
     width: 93%;
+  }
+
+  input[type=text] {
+    font-size: 14px;
+  }
+
+  input[type=date] {
+    font-size: 12px;
+    width: 35%;
   }
 
   h1 {
     font-size: 20px;
   }
 
-  li {
+  .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .list li {
     font-size: 15px;
   }
 
-  li span {
+  .list li span {
     font-size: 40px;
   }
 }

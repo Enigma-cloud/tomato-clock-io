@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+
+:root {
+  --main-col: rgba(70, 128, 219, 0.70);
+  --dark-var-1: #181a1b;
+  --dark-var-2: #43484b;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -36,7 +43,7 @@ video {
   top: 0;
   height: 100vh;
   width: 100vw;
-  /* background-color: rgba(22, 22, 22, 0.7); */
+  background-color: rgba(22, 22, 22, 0.4);
 }
 
 /* Container */
@@ -54,7 +61,7 @@ video {
   z-index: 2;
   display: flex;
   justify-content: center;
-  background-color: rgba(213, 98, 98, 0.85);
+  background-color: rgba(70, 128, 219, 0.70);
 }
 
 .input-container {
@@ -85,7 +92,7 @@ h1 {
   width: 100%;
   margin: 5px;
   border-radius: 5px;
-  background-color: #181a1b;
+  background-color: var(--dark-var-1);
   overflow: hidden;
 }
 
@@ -122,7 +129,7 @@ input[type=date] {
   position: relative;
   bottom: 0;
   border-radius: 0;
-  background-color: #43484b;
+  background-color: var(--dark-var-2);
   margin-top: 41.5px;
 }
 
@@ -134,7 +141,7 @@ button {
   margin-top: 15px;
   border: none;
   text-transform: uppercase;
-  background: #ba3f3f;
+  background: var(--dark-var-1);
   color: white;
   cursor: pointer;
   outline: none;

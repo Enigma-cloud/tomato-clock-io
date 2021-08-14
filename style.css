@@ -48,19 +48,16 @@ video {
 
 /* Container */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   min-width: 580px;
   min-height: 304px;
   color: rgb(255, 255, 255);
   margin: 0 auto;
-  padding: 25px 50px;
+  padding: 25px 50px 25px 0px;
   border-radius: 5px;
   z-index: 2;
   display: flex;
   justify-content: center;
+  flex-direction: row;
   background-color: rgba(70, 128, 219, 0.70);
 }
 
@@ -80,17 +77,17 @@ h1 {
 /* Menu */
 .menu {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   flex-grow: 1;
   margin-right: 50px;
+  background-color: var(--dark-var-1);
 }
 
 
 /* Form */
 .form {
   width: 100%;
-  margin: 5px;
   border-radius: 5px;
   background-color: var(--dark-var-1);
   overflow: hidden;
@@ -126,12 +123,16 @@ input[type=date] {
 }
 
 .custom-btn {
-  position: relative;
-  bottom: 0;
   border-radius: 0;
   background-color: var(--dark-var-2);
   margin-top: 41.5px;
 }
+
+/* Icons */
+.fas {
+  font-size: 25px;
+}
+
 
 /* Button */
 button {
@@ -149,6 +150,11 @@ button {
 
 button:hover {
   filter: brightness(90%);
+}
+
+.icon-btn {
+  width: 5em;
+  border-radius: 0;
 }
 
 /* Countdown */
@@ -217,7 +223,7 @@ button:hover {
     min-width: unset;
     width: 95vw;
     min-height: 245px;
-    padding: 20px;
+    padding: 0px 20px 20px;
     margin: 10px;
   }
 
@@ -226,6 +232,12 @@ button:hover {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .menu button {
+    margin-top: 0;
   }
 
   .input-container {
@@ -254,6 +266,10 @@ button:hover {
   input[type=date] {
     font-size: 12px;
     width: 35%;
+  }
+
+  .fas {
+    font-size: 20px;
   }
 
   h1 {

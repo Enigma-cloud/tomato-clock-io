@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トマト</title>
+    <title>Tymer</title>
     <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,16 +19,16 @@
     <!-- Container -->
     <div class="container">
         <!-- Menu -->
-        <!-- <div class="menu" id="menu">
-            <button disabled>Timer</button>
-            <button disabled>Countdown</button>
-            <button disabled>Settings</button>
-        </div> -->
+        <div class="menu" id="menu">
+            <button class="icon-btn" title="Countdown"><i class="fas fa-calendar-day"></i></button>
+            <button class="icon-btn" title="Timer"><i class="fas fa-stopwatch"></i></button>
+            <button class="icon-btn" title="Settings"><i class="fas fa-cog"></i></button>
+        </div>
         <!-- Input -->
         <div class="input-container" id="input-container">
             <form class="form" id="countdownForm">
                 <label for="title" hidden>Title</label>
-                <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  required>
+                <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  autofocus required>
                 <label for="date-picker" hidden>Select a Date</label>
                 <input class="custom-input" type="date" name="date" id="date-picker" required>
                 <button class="custom-btn" type="submit">Submit</button>

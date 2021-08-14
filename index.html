@@ -20,36 +20,39 @@
     <div class="container">
         <!-- Menu -->
         <div class="menu" id="menu">
+            <button class="icon-btn" title="Clock"><i class="fas fa-clock"></i></button>
             <button class="icon-btn" title="Countdown"><i class="fas fa-calendar-day"></i></button>
             <button class="icon-btn" title="Timer"><i class="fas fa-stopwatch"></i></button>
             <button class="icon-btn" title="Settings"><i class="fas fa-cog"></i></button>
         </div>
-        <!-- Input -->
-        <div class="input-container" id="input-container">
-            <form class="form" id="countdownForm">
-                <label for="title" hidden>Title</label>
-                <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  autofocus required>
-                <label for="date-picker" hidden>Select a Date</label>
-                <input class="custom-input" type="date" name="date" id="date-picker" required>
-                <button class="custom-btn" type="submit">Submit</button>
-            </form>
-        </div>
-        <!-- Countdown -->
-        <div class="countdown" id="countdown" hidden>
-            <h1 id="countdown-title">Countdown Title</h1>
-            <ul class="list">
-                <li><span class="time-span"></span>Days</li>
-                <li><span class="time-span"></span>Hours</li>
-                <li><span class="time-span"></span>Minutes</li>
-                <li><span class="time-span"></span>Seconds</li>
-            </ul>
-            <button id="countdown-button">Reset</button>
-        </div>
-        <!-- Complete -->
-        <div class="complete" id="complete" hidden>
-            <h1 class="complete-title">Countdown Complete!</h1>
-            <h1 id="complete-info"></h1>
-            <button id="complete-button">Set New Countdown</button>
+        <div class="countdown-container">
+            <!-- Input -->
+            <div class="input-container" id="input-container">
+                <form class="form" id="countdownForm">
+                    <label for="title" hidden>Title</label>
+                    <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  autofocus required>
+                    <label for="date-picker" hidden>Select a Date</label>
+                    <input class="custom-input" type="date" name="date" id="date-picker" required>
+                    <button class="custom-btn" type="submit">Submit</button>
+                </form>
+            </div>
+            <!-- Countdown -->
+            <div class="countdown" id="countdown" hidden>
+                <h1 id="countdown-title">Countdown Title</h1>
+                <ul class="list">
+                    <li><span class="time-span"></span>Days</li>
+                    <li><span class="time-span"></span>Hours</li>
+                    <li><span class="time-span"></span>Minutes</li>
+                    <li><span class="time-span"></span>Seconds</li>
+                </ul>
+                <button id="countdown-reset-btn">Reset</button>
+            </div>
+            <!-- Complete -->
+            <div class="complete" id="complete" hidden>
+                <h1 class="complete-title">Countdown Complete!</h1>
+                <h1 id="complete-info"></h1>
+                <button id="complete-button">Set New Countdown</button>
+            </div>
         </div>
     </div>
     <!-- Script -->

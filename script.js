@@ -4,7 +4,7 @@ const dateEl = document.getElementById('date-picker');
 
 const countdownEl = document.getElementById('countdown');
 const countdownElTitle = document.getElementById('countdown-title');
-const countdownBtn = document.getElementById('countdown-button');
+const countdownResetBtn = document.getElementById('countdown-reset-btn');
 const timeElements = document.querySelectorAll('.time-span');
 
 const completeEl = document.getElementById('complete');
@@ -118,8 +118,10 @@ function restorePreviousCountdown() {
 
 /** Event Listeners */
 countdownForm.addEventListener('submit', updateCountdown);
-countdownBtn.addEventListener('click', resetCountdown);
+countdownResetBtn.addEventListener('click', resetCountdown);
 completeBtn.addEventListener('click', resetCountdown);
+
+const countdownViewBtn = document.getElementById('countdown-container');
 
 // On Load, check localStorage
 restorePreviousCountdown();

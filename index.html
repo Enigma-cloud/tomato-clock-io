@@ -20,14 +20,26 @@
     <div class="container">
         <!-- Menu -->
         <div class="menu" id="menu">
-            <button class="icon-btn" title="Clock"><i class="fas fa-clock"></i></button>
-            <button class="icon-btn" title="Countdown"><i class="fas fa-calendar-day"></i></button>
-            <button class="icon-btn" title="Timer"><i class="fas fa-stopwatch"></i></button>
-            <button class="icon-btn" title="Settings"><i class="fas fa-cog"></i></button>
+           <ul class="menu-list">
+                <button class="icon-btn" id="clock-btn" title="Clock"><i class="fas fa-clock"></i></button>
+                <button class="icon-btn" id="countdown-btn" title="Countdown"><i class="fas fa-calendar-day"></i></button>
+                <button class="icon-btn" id="timer-btn" title="Timer"><i class="fas fa-stopwatch"></i></button>
+                <button class="icon-btn" id="settings-btn" title="Settings"><i class="fas fa-cog"></i></button>
+           </ul>
         </div>
-        <div class="countdown-container">
+        <div id="clock-container" hidden>
+            <h1 id="clock-title">Clock Title</h1>
+            <ul class="list">
+                <li><span class="time-span clock-time"></span>Hours</li>
+                <li><span class="time-span time-divider">:</span></li>
+                <li><span class="time-span clock-time"></span>Minutes</li>
+                <li><span class="time-span time-divider">:</span></li>
+                <li><span class="time-span clock-time"></span>Seconds</li>
+            </ul>
+        </div>
+        <div id="countdown-container" hidden>
             <!-- Input -->
-            <div class="input-container" id="input-container">
+            <div class="input-container" id="input-container" hidden>
                 <form class="form" id="countdownForm">
                     <label for="title" hidden>Title</label>
                     <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  autofocus required>
@@ -40,10 +52,10 @@
             <div class="countdown" id="countdown" hidden>
                 <h1 id="countdown-title">Countdown Title</h1>
                 <ul class="list">
-                    <li><span class="time-span"></span>Days</li>
-                    <li><span class="time-span"></span>Hours</li>
-                    <li><span class="time-span"></span>Minutes</li>
-                    <li><span class="time-span"></span>Seconds</li>
+                    <li><span class="time-span countdown-time"></span>Days</li>
+                    <li><span class="time-span countdown-time"></span>Hours</li>
+                    <li><span class="time-span countdown-time"></span>Minutes</li>
+                    <li><span class="time-span countdown-time"></span>Seconds</li>
                 </ul>
                 <button id="countdown-reset-btn">Reset</button>
             </div>

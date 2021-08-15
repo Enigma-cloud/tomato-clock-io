@@ -1,3 +1,10 @@
+// Clock
+const clockContainer = document.getElementById('clock-container');
+const clockElTitle = document.getElementById('clock-title');
+const clockTimeEls = document.querySelectorAll('.clock-time');
+
+
+// Countdown
 const inputContainer = document.getElementById('input-container');
 const countdownForm = document.getElementById('countdownForm');
 const dateEl = document.getElementById('date-picker');
@@ -5,17 +12,28 @@ const dateEl = document.getElementById('date-picker');
 const countdownEl = document.getElementById('countdown');
 const countdownElTitle = document.getElementById('countdown-title');
 const countdownResetBtn = document.getElementById('countdown-reset-btn');
-const timeElements = document.querySelectorAll('.time-span');
+const countdownTimeEls = document.querySelectorAll('.countdown-time');
 
 const completeEl = document.getElementById('complete');
 const completeElInfo = document.getElementById('complete-info');
 const completeBtn = document.getElementById('complete-button');
 
+/** Variables & Constants */
+// Clock
+let clockTitle = '';
+let clockDate = '';
+let clockValue = new Date();
+let clockActive;
+// Countdown
 let countdownTitle = '';
 let countdownDate = '';
 let countdownValue = new Date();
 let countdownActive;
 let savedCountdown;
+
+// View booleans
+let isClock;
+let isCountdown;
 
 // Time variables
 const second = 1000;
@@ -30,37 +48,50 @@ dateEl.setAttribute('min', today);
 /** Functions */
 // Populate countdown, complete UI
 function updateDOM() {
-    countdownActive = setInterval(() => {
-        const now =  new Date().getTime();
-        const distance = countdownValue - now;
-        // Calculate time units
-        const days = Math.floor(distance / day);
-        const hours = Math.floor((distance % day) / hour);
-        const minutes = Math.floor((distance % hour) / minute);
-        const seconds = Math.floor((distance % minute) / second);
+    if (isCountdown) {
+        countdownActive = setInterval(() => {
+            const now =  new Date().getTime();
+            const distance = countdownValue - now;
+            // Calculate time units
+            const days = Math.floor(distance / day);
+            const hours = Math.floor((distance % day) / hour);
+            const minutes = Math.floor((distance % hour) / minute);
+            const seconds = Math.floor((distance % minute) / second);
+    
+            // Hide Input
+            inputContainer.hidden = true;
+    
+            // If Countdown complete, show Complete
+            if (distance < 0) {
+                countdownEl.hidden = true;
+                clearInterval(countdownActive);
+                completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
+                completeEl.hidden = false;
+            }
+            // Else, show Countdown 
+            else {
+                // Populate Countdown
+                countdownElTitle.textContent = `${countdownTitle}`;
+                countdownTimeEls[0].textContent = `${days}`;
+                countdownTimeEls[1].textContent = `${hours}`;
+                countdownTimeEls[2].textContent = `${minutes}`;
+                countdownTimeEls[3].textContent = `${seconds}`;
+                completeEl.hidden = true;
+                countdownEl.hidden = false;
+            }
+        }, second);
+    }
 
-        // Hide Input
-        inputContainer.hidden = true;
+    if (isClock) {
+        clockActive = setInterval(() => {
+            const today = new Date();
 
-        // If Countdown complete, show Complete
-        if (distance < 0) {
-            countdownEl.hidden = true;
-            clearInterval(countdownActive);
-            completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
-            completeEl.hidden = false;
-        }
-        // Else, show Countdown 
-        else {
-            // Populate Countdown
-            countdownElTitle.textContent = `${countdownTitle}`;
-            timeElements[0].textContent = `${days}`;
-            timeElements[1].textContent = `${hours}`;
-            timeElements[2].textContent = `${minutes}`;
-            timeElements[3].textContent = `${seconds}`;
-            completeEl.hidden = true;
-            countdownEl.hidden = false;
-        }
-    }, second);
+            clockElTitle.textContent = `${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
+            clockTimeEls[0].textContent = `${today.getHours()}`;
+            clockTimeEls[1].textContent = `${today.getMinutes()}`;
+            clockTimeEls[2].textContent = `${today.getSeconds()}`;
+        }, second);
+    }
 }
 
 
@@ -121,7 +152,31 @@ countdownForm.addEventListener('submit', updateCountdown);
 countdownResetBtn.addEventListener('click', resetCountdown);
 completeBtn.addEventListener('click', resetCountdown);
 
-const countdownViewBtn = document.getElementById('countdown-container');
 
-// On Load, check localStorage
-restorePreviousCountdown();
+const countdownContainer = document.getElementById('countdown-container');
+
+const countdownViewBtn = document.getElementById('countdown-btn');
+countdownViewBtn.addEventListener('click', () => {
+    isCountdown = true;
+    isClock = false;
+
+    isCountdown ? countdownContainer.hidden = false : '';
+    isClock ? '' : clockContainer.hidden = true;
+
+    if (localStorage.getItem('countdown')) {
+        restorePreviousCountdown();
+    }
+    else {
+        resetCountdown();
+    }
+});
+
+const clockViewButton = document.getElementById('clock-btn');
+clockViewButton.addEventListener('click', () => {
+    isCountdown = false;
+    isClock = true;
+    
+    isCountdown ? '' : countdownContainer.hidden = true ;
+    isClock ? clockContainer.hidden = false : '';
+    updateDOM();
+});

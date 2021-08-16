@@ -67,6 +67,10 @@ video {
   height: 100%;
 }
 
+#stopwatch-container {
+  width: 500px;
+}
+
 h1 {
   font-size: 35px;
   text-align: center;
@@ -121,6 +125,17 @@ input {
 input[type=date] {
   width: 30%;
   cursor: pointer;
+}
+
+input[type=number] {
+  background-color: var(--dark-var-2);
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  font-size: 0.8rem;
+  margin: 10px;
+  padding: 5px;
+  width: 15%;
 }
 
 .custom-input {
@@ -259,7 +274,7 @@ button:hover {
 
   .menu-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
     margin: 2px;
@@ -304,6 +319,11 @@ button:hover {
   input[type=date] {
     font-size: 12px;
     width: 35%;
+  }
+
+  input[type=number] {
+    font-size: 12px;
+    width: 10%;
   }
 
   .fas {

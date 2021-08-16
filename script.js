@@ -1,11 +1,13 @@
 // Clock
+const clockViewButton = document.getElementById('clock-btn');
 const clockContainer = document.getElementById('clock-container');
 const clockElTitle = document.getElementById('clock-title');
 const clockTimeEls = document.querySelectorAll('.clock-time');
 
-
 // Countdown
-const inputContainer = document.getElementById('input-container');
+const countdownViewBtn = document.getElementById('countdown-btn');
+const countdownContainer = document.getElementById('countdown-container');
+const inputContainer = document.getElementById('countdown-input');
 const countdownForm = document.getElementById('countdownForm');
 const dateEl = document.getElementById('date-picker');
 
@@ -48,6 +50,17 @@ dateEl.setAttribute('min', today);
 /** Functions */
 // Populate countdown, complete UI
 function updateDOM() {
+    if (isClock) {
+        clockActive = setInterval(() => {
+            const today = new Date();
+
+            clockElTitle.textContent = `${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
+            clockTimeEls[0].textContent = `${today.getHours()}`;
+            clockTimeEls[1].textContent = `${today.getMinutes()}`;
+            clockTimeEls[2].textContent = `${today.getSeconds()}`;
+        }, second);
+    }
+
     if (isCountdown) {
         countdownActive = setInterval(() => {
             const now =  new Date().getTime();
@@ -82,8 +95,8 @@ function updateDOM() {
         }, second);
     }
 
-    if (isClock) {
-        clockActive = setInterval(() => {
+    if (isStopwatch) {
+        stopwatchActive = setInterval(() => {
             const today = new Date();
 
             clockElTitle.textContent = `${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
@@ -148,20 +161,27 @@ function restorePreviousCountdown() {
 }
 
 /** Event Listeners */
+clockViewButton.addEventListener('click', () => {
+    isClock = true;
+    isCountdown = false;
+    isStopwatch = false;
+    
+    isClock ? clockContainer.hidden = false : '';
+    isCountdown ? '' : countdownContainer.hidden = true ;
+    updateDOM();
+});
+
 countdownForm.addEventListener('submit', updateCountdown);
 countdownResetBtn.addEventListener('click', resetCountdown);
 completeBtn.addEventListener('click', resetCountdown);
 
-
-const countdownContainer = document.getElementById('countdown-container');
-
-const countdownViewBtn = document.getElementById('countdown-btn');
 countdownViewBtn.addEventListener('click', () => {
-    isCountdown = true;
     isClock = false;
+    isCountdown = true;
+    isStopwatch = false;
 
-    isCountdown ? countdownContainer.hidden = false : '';
     isClock ? '' : clockContainer.hidden = true;
+    isCountdown ? countdownContainer.hidden = false : '';
 
     if (localStorage.getItem('countdown')) {
         restorePreviousCountdown();
@@ -171,12 +191,19 @@ countdownViewBtn.addEventListener('click', () => {
     }
 });
 
-const clockViewButton = document.getElementById('clock-btn');
-clockViewButton.addEventListener('click', () => {
+
+let isStopwatch;
+let stopwatchActive;
+
+const stopwatchViewBtn = document.getElementById('stopwatch-btn');
+const stopwatchContainer = document.getElementById('stopwatch-container');
+stopwatchViewBtn.addEventListener('click', () => {
+    isClock = false;
     isCountdown = false;
-    isClock = true;
-    
-    isCountdown ? '' : countdownContainer.hidden = true ;
-    isClock ? clockContainer.hidden = false : '';
+    isStopwatch = true;
+
+    isClock ? '' : clockContainer.hidden = true;
+    isCountdown ? '' : countdownContainer.hidden = true;
+    isStopwatch ? stopwatchContainer.hidden = false : '';
     updateDOM();
 });

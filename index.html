@@ -23,12 +23,12 @@
            <div class="menu-list">
                 <button class="icon-btn" id="clock-btn" title="Clock"><i class="fas fa-clock"></i></button>
                 <button class="icon-btn" id="countdown-btn" title="Countdown"><i class="fas fa-calendar-day"></i></button>
-                <button class="icon-btn" id="timer-btn" title="Timer"><i class="fas fa-stopwatch"></i></button>
+                <button class="icon-btn" id="stopwatch-btn" title="Stopwatch"><i class="fas fa-stopwatch"></i></button>
                 <button class="icon-btn" id="settings-btn" title="Settings"><i class="fas fa-cog"></i></button>
            </div>
         </div>
         <div id="clock-container" hidden>
-            <h1 id="clock-title">Clock Title</h1>
+            <h1 id="clock-title">Clock</h1>
             <ul class="list">
                 <li><span class="time-span clock-time"></span>Hours</li>
                 <li><span class="time-span time-divider">:</span></li>
@@ -39,10 +39,10 @@
         </div>
         <div id="countdown-container" hidden>
             <!-- Input -->
-            <div class="input-container" id="input-container" hidden>
+            <div class="input-container" id="countdown-input" hidden>
                 <form class="form" id="countdownForm">
                     <label for="title" hidden>Title</label>
-                    <input class="custom-input" type="text" name="title" id="title" placeholder="What are you counting down to?"  autofocus required>
+                    <input class="custom-input" type="text" name="title" id="countdown-input-title" placeholder="What are you counting down to?"  autofocus required>
                     <label for="date-picker" hidden>Select a Date</label>
                     <input class="custom-input" type="date" name="date" id="date-picker" required>
                     <button class="custom-btn" type="submit">Submit</button>
@@ -64,6 +64,33 @@
                 <h1 class="complete-title">Countdown Complete!</h1>
                 <h1 id="complete-info"></h1>
                 <button id="complete-button">Set New Countdown</button>
+            </div>
+        </div>
+        <div id="stopwatch-container">
+           <!-- Input -->
+           <div class="input-container" id="stopwatch-input">
+                <form class="form" id="stopwatchForm">
+                    <label for="title" hidden>Title</label>
+                    <input class="custom-input" type="text" name="title" id="stopwatch-input-title" placeholder="Stopwatch title..."  autofocus>
+                    <label for="hours" hidden>Hours</label>
+                    <input class="time-input" type="number" min="0" max="25" placeholder="Hours">
+                    <label for="hours" hidden>Minutes</label>
+                    <input class="time-input" type="number" min="0" max="60" placeholder="Minutes">
+                    <label for="hours" hidden>Seconds</label>
+                    <input class="time-input" type="number" min="0" max="60" placeholder="Seconds">
+                    <button class="custom-btn" type="submit">Submit</button>
+                </form>
+            </div>
+            <!-- Stopwatch -->
+            <div id="stopwatch" hidden>
+                <h1 id="stopwatch-title">Stopwatch</h1>
+                <ul class="list">
+                    <li><span class="time-span stopwatch-time"></span>Hours</li>
+                    <li><span class="time-span time-divider">:</span></li>
+                    <li><span class="time-span stopwatch-time"></span>Minutes</li>
+                    <li><span class="time-span time-divider">:</span></li>
+                    <li><span class="time-span stopwatch-time"></span>Seconds</li>
+                </ul>
             </div>
         </div>
     </div>

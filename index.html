@@ -69,9 +69,9 @@
             </div>
         </div>
         <!-- Stopwatch -->
-        <div id="stopwatch-container">
+        <div id="stopwatch-container" hidden>
            <!-- Input -->
-           <div class="input-container" id="stopwatch-input">
+           <div class="input-container" id="stopwatch-inputs">
                 <form class="form" id="stopwatchForm">
                     <label for="title" hidden>Title</label>
                     <input class="custom-input" type="text" name="title" id="stopwatch-input-title" placeholder="Stopwatch title..."  autofocus>
@@ -85,9 +85,9 @@
                 </form>
             </div>
             <!-- Stopwatch -->
-            <div id="stopwatch" hidden>
+            <div id="stopwatch-display" hidden>
                 <h1 id="stopwatch-title">Stopwatch</h1>
-                <ul class="list" id="stopwatch-list">
+                <ul class="list" id="stopwatch-list" hidden>
                     <li><span class="time-span stopwatch-time"></span>Hours</li>
                     <li><span class="time-span time-divider">:</span></li>
                     <li><span class="time-span stopwatch-time"></span>Minutes</li>

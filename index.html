@@ -27,6 +27,7 @@
                 <button class="icon-btn" id="settings-btn" title="Settings"><i class="fas fa-cog"></i></button>
            </div>
         </div>
+        <!-- Clock -->
         <div id="clock-container" hidden>
             <h1 id="clock-title">Clock</h1>
             <ul class="list">
@@ -37,6 +38,7 @@
                 <li><span class="time-span clock-time"></span>Seconds</li>
             </ul>
         </div>
+        <!-- Countdown -->
         <div id="countdown-container" hidden>
             <!-- Input -->
             <div class="input-container" id="countdown-input" hidden>
@@ -66,6 +68,7 @@
                 <button id="complete-button">Set New Countdown</button>
             </div>
         </div>
+        <!-- Stopwatch -->
         <div id="stopwatch-container">
            <!-- Input -->
            <div class="input-container" id="stopwatch-input">
@@ -73,18 +76,18 @@
                     <label for="title" hidden>Title</label>
                     <input class="custom-input" type="text" name="title" id="stopwatch-input-title" placeholder="Stopwatch title..."  autofocus>
                     <label for="hours" hidden>Hours</label>
-                    <input class="time-input" type="number" min="0" max="25" placeholder="Hours">
+                    <input class="time-input" type="number" min="0" max="25" id="stopwatch-hours" placeholder="Hours">
                     <label for="hours" hidden>Minutes</label>
-                    <input class="time-input" type="number" min="0" max="60" placeholder="Minutes">
+                    <input class="time-input" type="number" min="0" id="stopwatch-minutes" placeholder="Minutes">
                     <label for="hours" hidden>Seconds</label>
-                    <input class="time-input" type="number" min="0" max="60" placeholder="Seconds">
+                    <input class="time-input" type="number" min="0" id="stopwatch-seconds" placeholder="Seconds">
                     <button class="custom-btn" type="submit">Submit</button>
                 </form>
             </div>
             <!-- Stopwatch -->
             <div id="stopwatch" hidden>
                 <h1 id="stopwatch-title">Stopwatch</h1>
-                <ul class="list">
+                <ul class="list" id="stopwatch-list">
                     <li><span class="time-span stopwatch-time"></span>Hours</li>
                     <li><span class="time-span time-divider">:</span></li>
                     <li><span class="time-span stopwatch-time"></span>Minutes</li>

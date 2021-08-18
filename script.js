@@ -96,13 +96,19 @@ function updateDOM() {
     }
 
     if (isStopwatch) {
+        const formSeconds = document.getElementById('stopwatch-seconds');
+        const formMinutes = document.getElementById('stopwatch-minutes');
+        const formHours = document.getElementById('stopwatch-hours');
         stopwatchActive = setInterval(() => {
-            const today = new Date();
 
-            clockElTitle.textContent = `${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
-            clockTimeEls[0].textContent = `${today.getHours()}`;
-            clockTimeEls[1].textContent = `${today.getMinutes()}`;
-            clockTimeEls[2].textContent = `${today.getSeconds()}`;
+            let seconds = (formSeconds.value % 60);
+            let minutes = (formMinutes.value % 60) + (formSeconds / 60);
+            let hours = (formHours % 60)  + (formMinutes / 60);
+
+            stopwatchElTitle.textContent = `${stopwatchTitleInput.value}`;
+            stopwatchTimeEls[0].textContent = `${hours}`;
+            stopwatchTimeEls[1].textContent = `${minutes}`;
+            stopwatchTimeEls[2].textContent = `${seconds}`;
         }, second);
     }
 }
@@ -167,7 +173,8 @@ clockViewButton.addEventListener('click', () => {
     isStopwatch = false;
     
     isClock ? clockContainer.hidden = false : '';
-    isCountdown ? '' : countdownContainer.hidden = true ;
+    isCountdown ? '' : countdownContainer.hidden = true;
+    isStopwatch ? '' : stopwatchContainer.hidden = true;
     updateDOM();
 });
 
@@ -182,6 +189,7 @@ countdownViewBtn.addEventListener('click', () => {
 
     isClock ? '' : clockContainer.hidden = true;
     isCountdown ? countdownContainer.hidden = false : '';
+    isStopwatch ? '' : stopwatchContainer.hidden = true;
 
     if (localStorage.getItem('countdown')) {
         restorePreviousCountdown();
@@ -197,6 +205,10 @@ let stopwatchActive;
 
 const stopwatchViewBtn = document.getElementById('stopwatch-btn');
 const stopwatchContainer = document.getElementById('stopwatch-container');
+const stopwatchElTitle = document.getElementById('stopwatch-title');
+const stopwatchTitleInput = document.getElementById('stopwatch-input-title');
+const stopwatchTimeEls = document.querySelectorAll('.stopwatch-time');
+
 stopwatchViewBtn.addEventListener('click', () => {
     isClock = false;
     isCountdown = false;

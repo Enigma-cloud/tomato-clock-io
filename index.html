@@ -27,6 +27,8 @@
                 <button class="icon-btn" id="settings-btn" title="Settings"><i class="fas fa-cog"></i></button>
            </div>
         </div>
+        <!-- Temporary Landing View -->
+        <h1 style="display: flex; justify-content: center; align-items: center;">Tymer</h1>
         <!-- Clock -->
         <div id="clock-container" hidden>
             <h1 id="clock-title">Clock</h1>
@@ -43,8 +45,8 @@
             <!-- Input -->
             <div class="input-container" id="countdown-input" hidden>
                 <form class="form" id="countdownForm">
-                    <label for="title" hidden>Title</label>
-                    <input class="custom-input" type="text" name="title" id="countdown-input-title" placeholder="What are you counting down to?"  autofocus required>
+                    <label for="countdown-title" hidden>Title</label>
+                    <input class="custom-input" type="text" name="countdown-title" id="countdown-input-title" placeholder="What are you counting down to?"  autofocus required>
                     <label for="date-picker" hidden>Select a Date</label>
                     <input class="custom-input" type="date" name="date" id="date-picker" required>
                     <button class="custom-btn" type="submit">Submit</button>
@@ -73,14 +75,16 @@
            <!-- Input -->
            <div class="input-container" id="stopwatch-inputs">
                 <form class="form" id="stopwatchForm">
-                    <label for="title" hidden>Title</label>
-                    <input class="custom-input" type="text" name="title" id="stopwatch-input-title" placeholder="Stopwatch title..."  autofocus>
-                    <label for="hours" hidden>Hours</label>
-                    <input class="time-input" type="number" min="0" max="25" id="stopwatch-hours" placeholder="Hours">
-                    <label for="hours" hidden>Minutes</label>
-                    <input class="time-input" type="number" min="0" id="stopwatch-minutes" placeholder="Minutes">
-                    <label for="hours" hidden>Seconds</label>
-                    <input class="time-input" type="number" min="0" id="stopwatch-seconds" placeholder="Seconds">
+                    <label for="stopwatch-title" hidden>Title</label>
+                    <input class="custom-input" type="text" name="stopwatch-title" id="stopwatch-input-title" placeholder="Stopwatch title..."  autofocus>
+                    <p class="time-elements">
+                        <label for="hours" hidden>Hours</label>
+                        <input class="time-input" type="number" min="0" max="25" id="stopwatch-hours" placeholder="Hours">
+                        <label for="hours" hidden>Minutes</label>
+                        <input class="time-input" type="number" min="0" id="stopwatch-minutes" placeholder="Minutes">
+                        <label for="hours" hidden>Seconds</label>
+                        <input class="time-input" type="number" min="0" id="stopwatch-seconds" placeholder="Seconds">
+                    </p>
                     <button class="custom-btn" type="submit">Submit</button>
                 </form>
             </div>
@@ -94,6 +98,7 @@
                     <li><span class="time-span time-divider">:</span></li>
                     <li><span class="time-span stopwatch-time"></span>Seconds</li>
                 </ul>
+                <button id="stopwatch-reset-btn">Reset</button>
             </div>
         </div>
     </div>

@@ -20,6 +20,22 @@ const completeEl = document.getElementById('complete');
 const completeElInfo = document.getElementById('complete-info');
 const completeBtn = document.getElementById('complete-button');
 
+// Stopwatch
+const stopwatchViewBtn = document.getElementById('stopwatch-btn');
+const stopwatchContainer = document.getElementById('stopwatch-container');
+const stopwatchDisplay = document.getElementById('stopwatch-display');
+
+const stopwatchForm = document.getElementById('stopwatchForm');
+const stopwatchElTitle = document.getElementById('stopwatch-title');
+const stopwatchTitleInput = document.getElementById('stopwatch-input-title');
+const stopwatchTimeEls = document.querySelectorAll('.stopwatch-time');
+const stopwatchInputs = document.getElementById('stopwatch-inputs');
+
+const formElSecs = document.getElementById('stopwatch-seconds');
+const formElMins = document.getElementById('stopwatch-minutes');
+const formElHours = document.getElementById('stopwatch-hours');
+
+
 /** Variables & Constants */
 // Clock
 let clockTitle = '';
@@ -32,10 +48,13 @@ let countdownDate = '';
 let countdownValue = new Date();
 let countdownActive;
 let savedCountdown;
+// Stopwatch
+let stopwatchActive;
 
 // View booleans
 let isClock;
 let isCountdown;
+let isStopwatch;
 
 // Time variables
 const second = 1000;
@@ -46,6 +65,7 @@ const day = hour * 24;
 // Set Min Date
 const today = new Date().toISOString().split("T")[0];
 dateEl.setAttribute('min', today);
+
 
 /** Functions */
 // Populate countdown, complete UI
@@ -74,14 +94,12 @@ function updateDOM() {
             // Hide Input
             inputContainer.hidden = true;
     
-            // If Countdown complete, show Complete
             if (distance < 0) {
                 countdownEl.hidden = true;
                 clearInterval(countdownActive);
                 completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
                 completeEl.hidden = false;
             }
-            // Else, show Countdown 
             else {
                 // Populate Countdown
                 countdownElTitle.textContent = `${countdownTitle}`;
@@ -96,37 +114,35 @@ function updateDOM() {
     }
 
     if (isStopwatch) {
-        const formSeconds = document.getElementById('stopwatch-seconds');
-        const formMinutes = document.getElementById('stopwatch-minutes');
-        const formHours = document.getElementById('stopwatch-hours');
+        const inputSecs = formElSecs.value;
+        const inputMins = formElMins.value;
+        const inputHours = formElHours.value;
+        // Convert input time values into seconds
+        let hourVal = inputHours > 0 ? inputHours * 60**2 : 0;
+        let minuteVal = inputMins > 0 ? inputMins * 60 : 0;
+        let secVal = inputSecs > 0 ? inputSecs : 0;
+        let totalTime = Number(hourVal + minuteVal + secVal);
 
-        const storeSecs = formSeconds.value;
-        const storeMinutes = formMinutes.value;
-        const storeHours = formHours.value;
-        let totalTime = (storeHours * 60**2) + (storeMinutes * 60) + (storeSecs);
-        let tens = Number(formSeconds.value);
         stopwatchActive = setInterval(() => {
-            console.log(tens);
-            if (tens < 0) {
+            if (totalTime < 0) {
                 clearInterval(stopwatchActive);
             }
 
-            // const seconds = Math.floor((totalTime % minute) / second);
-            // const minutes = Math.floor((totalTime % hour) / minute);
-            // const hours = Math.floor(totalTime / hour);
-
-            // stopwatchElTitle.textContent = `${stopwatchTitleInput.value}`;
-            // stopwatchTimeEls[0].textContent = `${hours}`;
-            // stopwatchTimeEls[1].textContent = `${minutes}`;
-            // stopwatchTimeEls[2].textContent = `${seconds}`;
-            
-            // totalTime -= 1;
-            tens -= 1;
-            console.log(tens);
+            else {
+                const seconds = Math.floor((totalTime % 60) / 1);
+                const minutes = Math.floor((totalTime % 3600) / 60);
+                const hours = Math.floor(totalTime / 3600);
+                
+                stopwatchElTitle.textContent = `${stopwatchTitleInput.value}`;
+                stopwatchTimeEls[0].textContent = `${hours}`;
+                stopwatchTimeEls[1].textContent = `${minutes}`;
+                stopwatchTimeEls[2].textContent = `${seconds}`;
+                
+                totalTime = totalTime - 1;
+            }
         }, second);
     }
 }
-
 
 // Get values from Countdown Form
 function updateCountdown(e) {
@@ -180,7 +196,9 @@ function restorePreviousCountdown() {
     }
 }
 
+
 /** Event Listeners */
+// Clock
 clockViewButton.addEventListener('click', () => {
     isClock = true;
     isCountdown = false;
@@ -191,15 +209,16 @@ clockViewButton.addEventListener('click', () => {
     isStopwatch ? '' : stopwatchContainer.hidden = true;
     updateDOM();
 });
-
+// Countdown
 countdownForm.addEventListener('submit', updateCountdown);
 countdownResetBtn.addEventListener('click', resetCountdown);
 completeBtn.addEventListener('click', resetCountdown);
-
 countdownViewBtn.addEventListener('click', () => {
     isClock = false;
     isCountdown = true;
     isStopwatch = false;
+    // Reset clock
+    clearInterval(clockActive);
 
     isClock ? '' : clockContainer.hidden = true;
     isCountdown ? countdownContainer.hidden = false : '';
@@ -212,39 +231,22 @@ countdownViewBtn.addEventListener('click', () => {
         resetCountdown();
     }
 });
+// Stopwatch
+stopwatchViewBtn.addEventListener('click', () => {
+    isClock = false;
+    isCountdown = false;
+    isStopwatch = true;
+    // Reset clock
+    clearInterval(clockActive);
 
-
-function updateStopwatch(e) {
-    e.preventDefault();
-    
-}
-
-let isStopwatch;
-let stopwatchActive;
-
-const stopwatchForm = document.getElementById('stopwatchForm');
-const stopwatchViewBtn = document.getElementById('stopwatch-btn');
-const stopwatchContainer = document.getElementById('stopwatch-container');
-const stopwatchElTitle = document.getElementById('stopwatch-title');
-const stopwatchTitleInput = document.getElementById('stopwatch-input-title');
-const stopwatchTimeEls = document.querySelectorAll('.stopwatch-time');
-const stopwatchInputs = document.getElementById('stopwatch-inputs');
-const stopwatchDisplay = document.getElementById('stopwatch-display');
-
+    isClock ? '' : clockContainer.hidden = true;
+    isCountdown ? '' : countdownContainer.hidden = true;
+    isStopwatch ? stopwatchContainer.hidden = false : '';
+});
 stopwatchForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     stopwatchInputs.hidden = true;
     stopwatchDisplay.hidden = false;
-    updateDOM();
-});
-stopwatchViewBtn.addEventListener('click', () => {
-    isClock = false;
-    isCountdown = false;
-    isStopwatch = true;
-
-    isClock ? '' : clockContainer.hidden = true;
-    isCountdown ? '' : countdownContainer.hidden = true;
-    isStopwatch ? stopwatchContainer.hidden = false : '';
     updateDOM();
 });

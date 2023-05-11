@@ -1,2 +1,2 @@
 # tymer-io
-[Demo](https://enigma-cloud.github.io/tymer-io/)
+[Demo](https://kristian4res.github.io/tymer-io/)
